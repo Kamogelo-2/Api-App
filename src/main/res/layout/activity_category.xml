@@ -509,6 +509,7 @@
         <TextView
             android:text="Settings"
             android:textColor="#666666"
+
             android:textSize="12sp" />
     </LinearLayout>
 
