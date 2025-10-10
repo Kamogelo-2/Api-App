@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="44dp"
+            android:background="#F8F8F8"
+            android:gravity="center_horizontal">
+
+            <!-- Logo -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cr12lr270374151000000"
+                    android:paddingVertical="3dp"
+                    android:paddingHorizontal="4dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:text="β"
+                        android:textColor="#FFFFFF"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView
+                    android:text="Budget"
+                    android:textColor="#000000"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Subtitle -->
+            <TextView
+                android:text="Your Personal Budget Tracker"
+                android:textColor="#374151"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="11dp"/>
+
+            <TextView
+                android:text="Track expenses, set budget goals, and keep your finances organized"
+                android:textColor="#6B7280"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_marginBottom="29dp"/>
+
+            <!-- Login/Signup Buttons -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:background="@drawable/cr10bf2f2f2"
+                android:padding="4dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cr8bffffff"
+                    android:paddingVertical="6dp"
+                    android:paddingHorizontal="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="2dp">
+                    <TextView
+                        android:text="Log In"
+                        android:textColor="#737373"
+                        android:textSize="14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView
+                    android:text="Sign Up"
+                    android:textColor="#737373"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"/>
+            </LinearLayout>
+
+            <!-- Login Form -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/s000000sw1cr12bffffff"
+                android:padding="25dp"
+                android:elevation="2dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:text="Login"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"/>
+
+                <TextView
+                    android:text="Enter your credentials to access your account"
+                    android:textColor="#737373"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="28dp"/>
+
+                <TextView
+                    android:text="Email"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:hint="your.email@example.com"
+                    android:inputType="text"
+                    android:textColor="#999999"
+                    android:textSize="16sp"
+                    android:background="@drawable/s000000sw1cr10bffffff"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:text="Password"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:hint="••••••••"
+                    android:inputType="textPassword"
+                    android:textColor="#999999"
+                    android:textSize="16sp"
+                    android:background="@drawable/s000000sw1cr10bffffff"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cr10lr270374151000000"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="80dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:text="Log In"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Social login -->
+            <TextView
+                android:text="Or continue with"
+                android:textColor="#6B7280"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/s00000000sw1cr10bffffff"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+                <ImageView
+                    android:id="@+id/r4xhxxlb6p0r"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <TextView
+                android:text="Don't have an account?"
+                android:textColor="#6B7280"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
