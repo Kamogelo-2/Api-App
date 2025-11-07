@@ -1,92 +1,86 @@
-package com.example.apiapp
+package com.example.apiapp // Make sure this package name matches yours
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.view.View
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
-import com.bumptech.glide.Glide
+import com.example.apiapp.databinding.ActivityDashboardBinding
 
-class Dashboard : AppCompatActivity() {
-    private var editTextValue1: String = ""
-    private var editTextValue2: String = ""
-    private var editTextValue3: String = ""
-    private var editTextValue4: String = ""
+class DashboardActivity : AppCompatActivity() {
+
+    private companion object {
+        const val TAG = "DashboardActivity"
+    }
+
+    private lateinit var binding: ActivityDashboardBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_dashboard)
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/2hxy2i7r_expires_30_days.png").into(findViewById(R.id.relyec7yo5cu))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/rj60t7fl_expires_30_days.png").into(findViewById(R.id.rc5b2lzf056))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/geemk6r4_expires_30_days.png").into(findViewById(R.id.ri94ethm026))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/vtzs4tph_expires_30_days.png").into(findViewById(R.id.rhfdco4kkzsl))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/eq6etz2p_expires_30_days.png").into(findViewById(R.id.rksgbg7oknso))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/2cqqfd1m_expires_30_days.png").into(findViewById(R.id.rgnntjk9pnw5))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/ugqik3ku_expires_30_days.png").into(findViewById(R.id.rdoztaccrzb4))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/5x8tmwdk_expires_30_days.png").into(findViewById(R.id.rdbam0wcc0bo))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/ygnny1vz_expires_30_days.png").into(findViewById(R.id.rrbap5j7u6hq))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/9c9ewyhd_expires_30_days.png").into(findViewById(R.id.rrb6yz254d4))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/goo0yi24_expires_30_days.png").into(findViewById(R.id.r9zcn4niz02))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/33yy2243_expires_30_days.png").into(findViewById(R.id.rmvea5qdb2rr))
-        val editText1: EditText = findViewById(R.id.rzt1014aw69c)
-        editText1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue1 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val editText2: EditText = findViewById(R.id.roihnsf6mpl)
-        editText2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue2 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val editText3: EditText = findViewById(R.id.ra3yemesa12)
-        editText3.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue3 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val editText4: EditText = findViewById(R.id.r0dfat2cf1wn)
-        editText4.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue4 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val button1: View = findViewById(R.id.r8jfr3zr6qdm)
-        button1.setOnClickListener {
-            println("Pressed")
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        Log.d(TAG, "onCreate: DashboardActivity started.")
+
+        // Set up click listeners
+        setupClickListeners()
+
+        // You would also load user data here
+        loadDashboardData()
+    }
+
+    private fun setupClickListeners() {
+        Log.d(TAG, "setupClickListeners: Setting up all dashboard click listeners.")
+
+        // Main "Add Expense" button
+        binding.btnAddExpense.setOnClickListener {
+            Log.d(TAG, "Add Expense button clicked. Launching AddExpenseActivity.")
+            startActivity(Intent(this, AddExpenseActivity::class.java))
         }
-        val button2: View = findViewById(R.id.r9ww0yjcszc)
-        button2.setOnClickListener {
-            println("Pressed")
+
+        // Other quick actions
+        binding.btnCategories.setOnClickListener {
+            Log.d(TAG, "Categories button clicked.")
+            showToast("Categories feature coming soon!")
         }
+
+        binding.btnReports.setOnClickListener {
+            Log.d(TAG, "Reports button clicked.")
+            showToast("Reports feature coming soon!")
+        }
+
+        binding.btnQuickSettings.setOnClickListener {
+            Log.d(TAG, "Quick Settings button clicked.")
+            showToast("Settings feature coming soon!")
+        }
+
+        // Header settings button
+        binding.btnSettings.setOnClickListener {
+            Log.d(TAG, "Header Settings button clicked.")
+            showToast("Main Settings feature coming soon!")
+        }
+
+        // View all transactions
+        binding.tvViewAllTransactions.setOnClickListener {
+            Log.d(TAG, "View All Transactions clicked.")
+            showToast("Transaction list feature coming soon!")
+        }
+    }
+
+    private fun loadDashboardData() {
+        Log.d(TAG, "loadDashboardData: Loading user data...")
+        // TODO: Replace this with real data from your secure storage or database
+
+        // Example of setting the welcome message
+        // val userName = ... get from storage ...
+        // binding.tvWelcomeUser.text = "Hello, $userName!"
+
+        binding.tvTotalSpentAmount.text = "R 4500.00"
+        binding.tvThisMonthAmount.text = "R 4500.00"
+        Log.d(TAG, "loadDashboardData: Dummy data loaded.")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

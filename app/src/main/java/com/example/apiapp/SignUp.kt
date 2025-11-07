@@ -1,73 +1,102 @@
-package com.example.apiapp
+
+package com.example.apiapp // Make sure this package name matches yours
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.util.Patterns
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.view.View
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
-import com.bumptech.glide.Glide
+import com.example.apiapp.databinding.ActivitySignupBinding
+import com.example.apiapp.utils.PasswordUtils
+import com.example.apiapp.utils.SecureStorage
 
-class SignUp : AppCompatActivity() {
-    private var editTextValue1: String = ""
-    private var editTextValue2: String = ""
-    private var editTextValue3: String = ""
+class SignUpActivity : AppCompatActivity() {
+
+    private companion object {
+        const val TAG = "SignUpActivity"
+    }
+
+    private lateinit var binding: ActivitySignupBinding
+    private lateinit var secureStorage: SecureStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_sign_up)
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/091iamow_expires_30_days.png").into(findViewById(R.id.rjoju2oxc1wg))
-        Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/XzC7nEBypE/vqod47z4_expires_30_days.png").into(findViewById(R.id.rrfs1ttoz7nc))
-        val editText1: EditText = findViewById(R.id.rexjdtm7wfn)
-        editText1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue1 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val editText2: EditText = findViewById(R.id.r3epmfq5p4ff)
-        editText2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue2 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val editText3: EditText = findViewById(R.id.rkg8jmw7x9c)
-        editText3.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue3 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
-        val button1: View = findViewById(R.id.rj8rpep90z1f)
-        button1.setOnClickListener {
-            println("Pressed")
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        Log.d(TAG, "onCreate: Activity started and view bound.")
+
+        // Initialize our secure storage helper
+        secureStorage = SecureStorage(this)
+
+        binding.btnSignUp.setOnClickListener {
+            Log.d(TAG, "Sign Up button clicked.")
+            handleSignUp()
         }
-        val button2: View = findViewById(R.id.rgq8ctldlx98)
-        button2.setOnClickListener {
-            println("Pressed")
+
+        binding.tvSignIn.setOnClickListener {
+            Log.d(TAG, "Sign In text clicked. Finishing activity.")
+            // Finishes this activity and returns to LoginActivity
+            finish()
         }
-        val button3: View = findViewById(R.id.rj24jlwe744a)
-        button3.setOnClickListener {
-            println("Pressed")
+
+        binding.btnGoogleSignIn.setOnClickListener {
+            Log.w(TAG, "Google Sign In clicked on Sign Up page. Instructing user to go back.")
+            Toast.makeText(this, "Please use Google Sign-In from the Login page.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Handles the new user registration flow.
+     */
+    private fun handleSignUp() {
+        val name = binding.etSignUpName.text.toString().trim()
+        val email = binding.etSignUpEmail.text.toString().trim()
+        val password = binding.etSignUpPassword.text.toString()
+
+        // --- 1. Basic Validation ---
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Log.w(TAG, "Sign up failed: One or more fields are empty.")
+            Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Log.w(TAG, "Sign up failed: Invalid email format.")
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (password.length < 8) {
+            Log.w(TAG, "Sign up failed: Password is too short (less than 8 chars).")
+            Toast.makeText(this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // --- 2. Check if user already exists ---
+        if (secureStorage.getHashedPassword(email) != null) {
+            Log.w(TAG, "Sign up failed: User already exists for email: $email")
+            Toast.makeText(this, "An account with this email already exists", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // --- 3. Hash Password & Save User ---
+        try {
+            Log.d(TAG, "Hashing password for new user...")
+            val hashedPassword = PasswordUtils.hashPassword(password)
+
+            // Save the user to our secure storage
+            secureStorage.saveUser(email, name, hashedPassword)
+
+            Log.i(TAG, "Sign up successful for user: $email")
+            Toast.makeText(this, "Account created successfully! Please log in.", Toast.LENGTH_LONG).show()
+
+            // Send user back to login screen
+            finish()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Sign up failed: Error during hashing or saving", e)
+            Toast.makeText(this, "Could not create account. Please try again.", Toast.LENGTH_SHORT).show()
         }
     }
 }

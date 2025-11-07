@@ -1,33 +1,74 @@
-package com.example.apiapp
+package com.example.apiapp // Make sure this package name matches yours
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.view.View
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
+import com.example.apiapp.databinding.ActivityCategoriesBinding
 
-class Category : AppCompatActivity() {
-    private var editTextValue1: String = ""
+class CategoriesActivity : AppCompatActivity() {
+
+    private companion object {
+        const val TAG = "CategoriesActivity"
+    }
+
+    private lateinit var binding: ActivityCategoriesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_category)
-        val editText1: EditText = findViewById(R.id.rxxwtiuegsac)
-        editText1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // before Text Changed
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextValue1 = s.toString()  // on Text Changed
-            }
-            override fun afterTextChanged(s: Editable?) {
-                // after Text Changed
-            }
-        })
+        binding = ActivityCategoriesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        Log.d(TAG, "onCreate: CategoriesActivity started.")
+
+        // Set up all click listeners
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        Log.d(TAG, "setupClickListeners: Setting up all static click listeners.")
+
+        // Header "Add Category" button
+        binding.btnAddCategory.setOnClickListener {
+            Log.d(TAG, "Add Category button clicked. Launching AddNewCategoryActivity.")
+            startActivity(Intent(this, AddNewCategoryActivity::class.java))
+        }
+
+        // --- Static Category Item Listeners ---
+        // In a RecyclerView, you would not do this.
+        binding.categoryFood.setOnClickListener { showCategoryToast("Food & Dining") }
+        binding.categoryTransport.setOnClickListener { showCategoryToast("Transport") }
+        binding.categoryShopping.setOnClickListener { showCategoryToast("Shopping") }
+        binding.categoryEntertainment.setOnClickListener { showCategoryToast("Entertainment") }
+        binding.categoryBills.setOnClickListener { showCategoryToast("Bills & Utilities") }
+        binding.categoryHealthcare.setOnClickListener { showCategoryToast("Healthcare") }
+        binding.categoryEducation.setOnClickListener { showCategoryToast("Education") }
+        binding.categoryOther.setOnClickListener { showCategoryToast("Other") }
+
+        // --- Bottom Navigation Bar ---
+        binding.btnNavAdd.setOnClickListener {
+            Log.d(TAG, "Nav 'Add' clicked. Launching AddExpenseActivity.")
+            startActivity(Intent(this, AddExpenseActivity::class.java))
+        }
+
+        binding.btnNavReports.setOnClickListener {
+            Log.d(TAG, "Nav 'Reports' clicked.")
+            showToast("Reports feature coming soon!")
+        }
+
+        binding.btnNavSettings.setOnClickListener {
+            Log.d(TAG, "Nav 'Settings' clicked.")
+            showToast("Settings feature coming soon!")
+        }
+    }
+
+    private fun showCategoryToast(categoryName: String) {
+        Log.d(TAG, "Clicked on category: $categoryName")
+        showToast("Clicked on $categoryName")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

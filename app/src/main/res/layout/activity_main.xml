@@ -1,191 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
     android:orientation="vertical"
-    android:background ="#FFFFFF"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
 
-    <!-- Container for the form -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxWidth="448dp"
+        android:background="@drawable/bg_white_rounded_8"
+        android:elevation="2dp"
         android:orientation="vertical"
-        android:background="@drawable/lr270ebebebffffff"
-        android:padding="16dp"
-        android:gravity="center_horizontal">
+        android:padding="25dp">
 
-        <!-- Card-like inner container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/se0e0e0sw1cr12bffffff"
-            android:elevation="2dp"
-            android:padding="24dp">
+            android:layout_marginBottom="22dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <!-- Icon Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/cr9999b000000"
-                android:paddingVertical="12dp"
-                android:orientation="vertical"
+                android:background="@drawable/bg_circular_black"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_gravity="center_horizontal">
+                android:padding="12dp">
 
                 <ImageView
-                    android:id="@+id/rjoju2oxc1wg"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher" />
             </LinearLayout>
+        </LinearLayout>
 
-            <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="6dp"
+            android:text="Create Account"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="28dp"
+            android:text="Start tracking your expenses today"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:text="Name"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etSignUpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_edittext_normal"
+            android:hint="John Doe"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:text="Email"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etSignUpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_edittext_normal"
+            android:hint="john@example.com"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:text="Password"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_edittext_normal"
+            android:hint="••••••••"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_button_black_rounded"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
+
             <TextView
-                android:id="@+id/r30ie8bdr1wq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Create Account"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="6dp"/>
+                android:text="Sign Up"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-            <!-- Subtitle -->
-            <TextView
-                android:id="@+id/rld7qsh1w83"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Start tracking your expenses today"
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:layout_marginBottom="28dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
 
-            <!-- Name Input -->
-            <TextView
-                android:text="Name"
-                android:textColor="#000000"
-                android:textSize="14sp"/>
-            <EditText
-                android:id="@+id/rexjdtm7wfn"
-                android:hint="John Doe"
-                android:inputType="text"
-                android:background="@drawable/sf0f0f0sw1cr10bffffff"
-                android:textColor="#999999"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"/>
-
-            <!-- Email Input -->
-            <TextView
-                android:text="Email"
-                android:textColor="#000000"
-                android:textSize="14sp"/>
-            <EditText
-                android:id="@+id/r3epmfq5p4ff"
-                android:hint="john@example.com"
-                android:inputType="text"
-                android:background="@drawable/sf0f0f0sw1cr10be8f0fe"
-                android:textColor="#999999"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"/>
-
-            <!-- Password Input -->
-            <TextView
-                android:text="Password"
-                android:textColor="#000000"
-                android:textSize="14sp"/>
-            <EditText
-                android:id="@+id/rkg8jmw7x9c"
-                android:hint="••••••••"
-                android:inputType="textPassword"
-                android:background="@drawable/sf0f0f0sw1cr10be8f0fe"
-                android:textColor="#999999"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Sign Up Button -->
-            <LinearLayout
-                android:id="@+id/rgq8ctldlx98"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cr10b000000"
-                android:padding="10dp"
-                android:orientation="vertical"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:layout_marginBottom="24dp">
-                <TextView
-                    android:text="Sign Up"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <!-- Divider -->
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#E0E0E0"
-                android:orientation="vertical"
-                android:layout_marginBottom="8dp"/>
-            <TextView
-                android:text="Or"
-                android:textSize="12sp"
-                android:textColor="#666666"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_centerVertical="true"
+                android:background="#E0E0E0" />
 
-            <!-- Google Sign In -->
-            <LinearLayout
-                android:id="@+id/rj24jlwe744a"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/sf0f0f0sw1cr10bffffff"
-                android:padding="10dp"
-                android:gravity="center_vertical"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="18dp">
-
-                <ImageView
-                    android:id="@+id/rrfs1ttoz7nc"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:scaleType="fitXY"/>
-                <TextView
-                    android:text="Sign in with Google"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <!-- Sign In Prompt -->
-            <TextView
-                android:text="Already have an account? Sign In"
+                android:layout_centerInParent="true"
+                android:background="#FFFFFF"
+                android:paddingHorizontal="8dp"
+                android:text="Or"
                 android:textColor="#666666"
-                android:textSize="14sp"
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/bg_edittext_normal"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android.orientation="horizontal"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="17dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Google"
+                android:textColor="#000000"
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Already have an account? Sign In"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
     </LinearLayout>
 </LinearLayout>
-
